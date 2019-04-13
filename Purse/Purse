@@ -1,0 +1,119 @@
+/*
+ * Naomi Nunez
+ * Homework 7
+ * CS136
+ * 4/12/19
+ */
+package purseapp;
+
+//Make this class implements the interface Comparable
+class Purse implements Comparable<Purse>
+{
+    public  int dollars;
+    public int nickles;
+    public int quarters;
+    public int dimes;
+    public int cents;
+
+    //Setters and getters
+    public void setDollar(int pDollars)
+    {
+        dollars = pDollars;
+    }
+
+    public int getDollar()
+    {
+        return dollars;
+    }
+
+    public void setQuarter(int pQuarters)
+    {
+        quarters = pQuarters;
+    }
+
+    public int getQuarter()
+    {
+        return quarters;
+    }
+
+     public void setNickle(int pNickles)
+    {
+        nickles =  pNickles;
+    }
+
+    public int getNickel()
+    {
+        return nickles;
+    }
+
+     public void setDime(int pDimes)
+    {
+        dimes =  pDimes;
+    }
+
+    public int getDime()
+    {
+        return dimes;
+    }
+
+    public void setCent(int pCents)
+    {
+        cents = pCents;
+    }
+
+    public int getCent()
+    {
+        return cents;
+    }
+
+    //Non-parameterized (aka no-arg) constructor that initializes all fields to zero
+    public Purse()
+    {
+        this.cents = 0;
+        this.quarters = 0;
+        this.nickles = 0;
+        this.cents = 0;
+        this.dimes = 0;
+    }
+    
+    //Parameterized constructor that initializes all fields to input values
+    public Purse(int pDollars, int pNickles, int pQuarters,int pDimes, int pCents)
+    {
+        super();
+        dollars = pDollars;
+        quarters = pQuarters;
+        nickles = pNickles;
+        dimes = pDimes;
+        cents = pCents;
+    }
+
+    //The copy constructore
+    public Purse (Purse purse)
+    {
+        dollars = purse.getDollar();
+        nickles = purse.getNickel();
+        dimes = purse.getDime();
+        quarters = purse.getQuarter();
+        cents = purse.getCent();
+    }
+
+    //Override the 𝑡𝑜𝑆𝑡𝑟𝑖𝑛𝑔 method to return the contents of a purse as a string
+    @Override
+    public String toString()
+    {
+        return "Inside the largest Purse:\nDollars: " + dollars + "\nQuarters: " +
+                quarters + "\nNickels: " + nickles + "\nDimes: " + dimes + "\nCents: " + cents + ".";
+    }
+
+    //When using comparable, also have to Override compareTo(Object o)
+    @Override
+    public int compareTo(Purse purse)
+    {
+        int purse1 = dollars * 100 + quarters * 25 + dimes * 10 + nickles * 5 + cents;
+        int purse2 = purse.getDollar() * 100 + purse.getQuarter() * 25 +
+                     purse.getDime() * 10 + purse.getNickel() * 5 +
+                     purse.getCent();
+        int comparePurse = new Integer(purse1).compareTo(purse2);
+        return comparePurse;
+    }
+}
