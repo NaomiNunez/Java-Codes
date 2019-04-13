@@ -1,0 +1,55 @@
+/* 
+* Naomi Nunez
+* Homework 7
+* CS136
+* 4/12/19
+* */
+package purseapp;
+
+public class PurseApp extends Purse
+{
+    public static void main(String[] args) 
+    {
+        Purse purse[] = new Purse[3];
+        
+        //Initialize the first purse using setter methods. This purse has 
+        //4 dollars, 5 dimes, and 2 cents 
+        //This is purse 1
+        purse[0] = new Purse();
+        purse[0].setDollar(4);
+        purse[0].setDime(5); 
+        purse[0].setCent(2);
+  
+        //Initialize the second purse using the parameterized constructor. 
+        //This purse has 2 dollars, 1 dime, 3 nickels, and 2 cents.  
+        //This is purse 2
+        purse[1] = new Purse(2, 0, 3, 1, 2); 
+        
+        //Use the purse class copy constructor to initialize the third purse 
+        //as a copy of the second purse.
+        //Initializing purse 3
+        purse[2] = new Purse(purse[1]);
+
+        //Call the method 𝑓𝑖𝑛𝑑𝐿𝑎𝑟𝑔𝑒𝑠𝑡 (described below) and use its output to 
+        //display the contents of the largest purse
+        Purse largestResult = findLargest(purse);
+        System.out.println(largestResult);
+    }
+
+    //Implement the method 𝑓𝑖𝑛𝑑𝐿𝑎𝑟𝑔𝑒𝑠𝑡 in the class 𝑃𝑢𝑟𝑠𝑒𝐴𝑝𝑝. It receives an 
+    //array of 𝑃𝑢𝑟𝑠𝑒 objects and returns the index of the one with most money
+    static Purse findLargest (Purse purse[])
+    {
+        Purse largestResult = purse[0];
+        //For loop to find largest purse
+        for (int i = 0; i < purse.length; i++)
+        {
+            //Stores largest purse in purse[i]
+            if(purse[i].compareTo(largestResult) > 0)
+            {
+                largestResult = purse[i];
+            }
+        }
+    return largestResult;
+    }
+}
